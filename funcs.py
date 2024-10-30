@@ -1,6 +1,6 @@
 from pymorphy3 import MorphAnalyzer
 morph = MorphAnalyzer(lang='ru')
-
+from typing import List, Tuple
 
 def process_input(full_inp: str, pos: list) -> int | Tuple[str, list]:
     """

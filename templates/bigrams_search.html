@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %} Поиск в корпусе {% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Главная</a></li>
+        <li><a href="/search">Поиск</a></li>
+        <li class="active"><a href="/bigrams">2-граммы</a></li>
+        <li><a href="/trigrams">3-граммы</a></li>
+      </ul>
+    </nav>
+
+    <div style="margin: 50px 10%">
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading" style="background-color:#d598a3; color:#fff">Внимание</div>
+        <div class="panel-body">
+            <p>В корпусе используется следующий набор тегов:</p>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Тег</th>
+                    <th>Часть речи</th>
+                    <th>Тег</th>
+                    <th>Часть речи</th>
+                    <th>Тег</th>
+                    <th>Часть речи</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>ADJ</td>
+                    <td>Прилагательное</td>
+                    <td>ADP</td>
+                    <td>Предлог</td>
+                    <td>ADV</td>
+                    <td>Наречие</td>
+                  </tr>
+                  <tr>
+                    <td>AUX</td>
+                    <td>Вспомогательный глагол</td>
+                    <td>CCONJ</td>
+                    <td>Сочинительный союз</td>
+                    <td>DET</td>
+                    <td>Определитель</td>
+                  </tr>
+                  <tr>
+                    <td>GRND</td>
+                    <td>Деепричастие</td>
+                    <td>INTJ</td>
+                    <td>Междометие</td>
+                    <td>NOUN</td>
+                    <td>Существительное</td>
+                  </tr>
+                  <tr>
+                    <td>NUM</td>
+                    <td>Числительное</td>
+                    <td>PART</td>
+                    <td>Частица</td>
+                    <td>PRON</td>
+                    <td>Местоимение</td>
+                  </tr>
+                  <tr>
+                    <td>PROPN</td>
+                    <td>Имя собственное</td>
+                    <td>PRT</td>
+                    <td>Частица</td>
+                    <td>SCONJ</td>
+                    <td>Подчинительный союз</td>
+                  </tr>
+                  <tr>
+                    <td>VERB</td>
+                    <td>Глагол</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p>Поиск поддерживает любой регистр</p>
+            <p>Чтобы найти лемму конкретной части речи, введи тег через точку: <i>печь.NOUN</i></p>
+        </div>
+      </div>
+    </div>
+    <form action="/bigrams_results" target="_blank">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="type1">Режим поиска:</label>
+              <select class="form-control" name="type1" id="type1">
+                <option value="lemma1">Поиск леммы</option>
+                <option value="token1">Поиск словоформы</option>
+                <option value="pos1">Поиск части речи</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="type2">Режим поиска:</label>
+              <select class="form-control" name="type2" id="type2">
+                <option value="lemma2">Поиск леммы</option>
+                <option value="token2">Поиск словоформы</option>
+                <option value="pos2">Поиск части речи</option>
+              </select>
+            </div>
+
+        </div>
+
+       <div class="form-row">
+           <div class="form-group col-md-6">
+              <label for="text1">Запрос:</label>
+              <input type="text" class="form-control" name="text1" id="text1">
+           </div>
+           <div class="form-group col-md-6">
+              <label for="text2">Запрос:</label>
+              <input type="text" class="form-control" name="text2" id="text2">
+           </div>
+       </div>
+
+        <div class="form-group">
+            <label for="num">Количество результатов (0, 100)</label>
+            <input type="range" class="form-control-range" name="num" id="num" min="0" max="100" step="1" onInput="$('#rangeval').html($(this).val())">
+            <span id="rangeval">50</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Поиск</button>
+    </form>
+    </div>
+{% endblock %}

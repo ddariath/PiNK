@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Результаты поиска {% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Главная</a></li>
+        <li><a href="/search">Поиск</a></li>
+        <li><a href="/bigrams">2-граммы</a></li>
+        <li><a href="/trigrams">3-граммы</a></li>
+      </ul>
+    </nav>
+
+    <div style="margin: 50px 10%">
+    <table class="table">
+        {% for i in range(0, results|length) %}
+            <tr>
+                <td scope="row">{{ i + 1 }}</td>
+                <td><a href="#" data-toggle="modal" data-target="#myModal1">{{ results[i][0] }}</a></td>
+                <div id="myModal1" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">О слове</h4>
+                      </div>
+                      <div class="modal-body">
+                          {% if results[i][6] %}
+                              {% set feats = results[i][6].split('|') %}
+                                {% for item in feats %}
+                                    <p>{{ item }}<p/>
+                                {% endfor %}
+                          {% else %}
+                              <p>Нет данных</p>
+                          {% endif %}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <td><a href="#" data-toggle="modal" data-target="#myModal2">{{ results[i][1] }}</a></td>
+                <div id="myModal2" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">О слове</h4>
+                      </div>
+                      <div class="modal-body">
+                          {% if results[i][7] %}
+                              {% set feats = results[i][7].split('|') %}
+                                {% for item in feats %}
+                                    <p>{{ item }}<p/>
+                                {% endfor %}
+                          {% else %}
+                            <p>Нет данных</p>
+                          {% endif %}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <td><a href="#" data-toggle="modal" data-target="#myModal3">{{ results[i][2] }}</a></td>
+                <div id="myModal3" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">О слове</h4>
+                      </div>
+                      <div class="modal-body">
+                          {% if results[i][8] %}
+                              {% set feats = results[i][8].split('|') %}
+                                {% for item in feats %}
+                                    <p>{{ item }}<p/>
+                                {% endfor %}
+                          {% else %}
+                            <p>Нет данных</p>
+                          {% endif %}
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <td>{{ results[i][3] }}</td>
+                <td>{{ results[i][4] }}</td>
+                <td>{{ results[i][5] }}{% if results[i].ended %}-{{ results[i].ended }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+{% endblock %}

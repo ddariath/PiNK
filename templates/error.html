@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Ошибка {% endblock %}
+
+{% block content %}
+    <style>
+        .image-small {
+            width: 35px; /* Задайте нужный размер */
+            height: auto; /* Автоматическая высота для сохранения пропорций */
+            margin-left: 5px; /* Отступ между текстом и изображением */
+        }
+    </style>
+
+    <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Главная</a></li>
+        <li><a href="/search">Поиск</a></li>
+        <li><a href="/bigrams">2-граммы</a></li>
+        <li><a href="/trigrams">3-граммы</a></li>
+      </ul>
+    </nav>
+
+    <div style="margin: 50px 10%">
+    <div class="panel panel-default">
+      <div class="panel-heading"><img src="https://cdn-icons-png.flaticon.com/512/7689/7689937.png" class="image-small" alt="Icon">&emsp;Ой!</div>
+      <div class="panel-body">
+          <p>&emsp;Кажется, ничего не найдено</p>
+          <p>&emsp;Проверь корректность введенного запроса</p>
+          <p>&emsp;Если ты уверен, что все верно, значит в корпусе нет ничего, подходящего под условия</p>
+      </div>
+    </div>
+    </div>
+{% endblock %}

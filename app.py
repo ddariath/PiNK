@@ -171,7 +171,6 @@ def bi_results():
         # применение фильтров к запросу
         if filters:
             query = query.filter(*filters)
-            print(query)
 
         search_result = query.distinct()\
             .order_by(func.random())\

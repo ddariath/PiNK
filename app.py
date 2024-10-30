@@ -3,7 +3,7 @@ from pymorphy3 import MorphAnalyzer
 from flask_sqlalchemy import SQLAlchemy
 import random
 from sqlalchemy import func
-from models import Token, Lemma, Sentence
+from models import Token, Sentence
 import os
 from sqlalchemy.orm import aliased
 from funcs import process_input, get_lemma

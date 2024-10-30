@@ -200,7 +200,6 @@ def tri_results():
         if res1 == 0 or res2 == 0 or res3 == 0:
             return render_template('error.html')
         inp1, inp_pos1, inp2, inp_pos2, inp3, inp_pos3 = res1[0], res1[1], res2[0], res2[1], res3[0], res3[1]
-        print(inp1, inp_pos1, inp2, inp_pos2, inp3, inp_pos3)
 
         Token1 = aliased(Token)
         Token2 = aliased(Token)
@@ -265,7 +264,6 @@ def tri_results():
         # применение фильтров к запросу
         if filters:
             query = query.filter(*filters)
-            print(query)
 
         search_result = query.distinct()\
             .order_by(func.random())\

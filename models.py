@@ -19,16 +19,6 @@ class Token(db.Model):
     sentence = db.relationship('Sentence', back_populates='tokens')
 
 
-
-
-class Lemma(db.Model):
-    __tablename__ = 'lemmas'
-
-    id_lemma = db.Column(db.Integer, primary_key=True)
-    lemma_name = db.Column(db.String, nullable=False)
-
-
-
 class Sentence(db.Model):
     __tablename__ = 'sentences'
 

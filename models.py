@@ -15,7 +15,8 @@ class Token(db.Model):
     id_lemma = db.Column(db.Integer, db.ForeignKey('lemmas.id_lemma'))
     feats = db.Column(db.String)
     lemma = db.Column(db.String, nullable=False)
-    # Определение отношений
+    
+    # определяем отношения
     sentence = db.relationship('Sentence', back_populates='tokens')
 
 
@@ -27,7 +28,7 @@ class Sentence(db.Model):
     name_of_texts = db.Column(db.String, nullable=False)
     url = db.Column(db.String)
 
-    # Определение отношений
+    # определяем отношения
     tokens = db.relationship('Token', back_populates='sentence')
 
 
